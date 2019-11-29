@@ -1,0 +1,293 @@
+/* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background-color: #4481eb;
+  background: url('/img/landscape_image.jpg') no-repeat bottom center/cover;
+  font-family: 'Nunito', sans-serif;
+  color: #dddcdc;
+  overflow: hidden;
+}
+
+/* Basic settings for card design */
+.cardBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  perspective: 1000px;
+}
+
+.cardBox .card {
+  position: relative;
+  height: 235px;
+  width: 372px;
+  transform-style: preserve-3d;
+  transition: 1s ease;
+}
+
+.cardBox .card .card-front,
+.cardBox .card .card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  backface-visibility: hidden;
+}
+
+/* --- Card rotation --- */
+.cardBox:hover .card {
+  transform: rotateY(180deg);
+}
+.cardBox .card .card-back {
+  transform: rotateY(180deg);
+}
+
+/* ----- front of the card ----- */
+.cardBox .card .card-front {
+  background-image: linear-gradient(
+    to top,
+    #1e3c72 0%,
+    #1e3c72 1%,
+    #2a5298 100%
+  );
+  box-shadow: 0px 35px 150px 25px rgba(0, 0, 0, 0.2),
+    1px 1px 10px 5px rgba(0, 0, 0, 0.1), -1.5px 0px 1px -1px rgb(114, 113, 113),
+    inset 0.5px 0px 1px rgba(255, 255, 255, 0.3),
+    inset 0px -1px 1px rgba(255, 255, 255, 0.05),
+    inset 1px -1px 1px rgba(0, 0, 0, 0.3),
+    inset 100px -1px 1px rgba(0, 0, 0, 0.1);
+}
+
+/* Text shadow on letters */
+.shadow {
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3), -3px 3px 3px rgba(0, 0, 0, 0.2),
+    -1px 2px 3px rgba(0, 0, 0, 0.2), 1px 1px 4px rgba(0, 0, 0, 0.2),
+    -1px -1px 2px rgba(221, 217, 217, 0.5);
+}
+
+/* Metal chip */
+.chip {
+  background-image: linear-gradient(to top, #9c6758 20%, #cf966a 100%);
+  box-shadow: inset 1px 2px 2px rgba(0, 0, 0, 0.6),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  height: 35px;
+  width: 50px;
+  position: absolute;
+  left: 40px;
+  top: 80px;
+}
+
+.weather-description p {
+  text-transform: uppercase;
+  transform: scaleY(1.15);
+  letter-spacing: 1.5px;
+  position: absolute;
+  left: 17px;
+  top: 120px;
+  padding: 8px;
+  font-size: 1.1em;
+}
+
+/* Date & Time */
+.clock-info {
+  position: absolute;
+  transform: scaleY(1.15);
+  right: 15px;
+  top: 15px;
+  text-align: right;
+  line-height: 25px;
+}
+
+.date {
+  text-transform: uppercase;
+  font-size: 15px;
+  letter-spacing: 1.7px;
+}
+
+.time {
+  font-size: 18px;
+  letter-spacing: 1.7px;
+  font-weight: 400;
+}
+
+/* Blinking separator in .time */
+#dots {
+  position: absolute;
+  right: 25px;
+  top: -2px;
+  opacity: 1;
+}
+
+/* Number of degrees */
+.temperature p {
+  transform: scaleY(1.15);
+  font-size: 22px;
+  font-weight: 300;
+  position: absolute;
+  left: 22px;
+  top: 15px;
+  cursor: pointer;
+}
+
+/* C for Celsius & F for Fahrenheit*/
+.temperature span {
+  font-size: 0.5em;
+  margin-left: 0px;
+  letter-spacing: 0.5px;
+}
+
+/* WEATHER/TIME */
+.app-title {
+  position: absolute;
+  right: 155px;
+  top: 160px;
+  text-transform: uppercase;
+  font-size: 8px;
+  color: #bdbdbd;
+}
+
+/* LOCATION */
+.location-title {
+  position: absolute;
+  left: 108px;
+  bottom: 36px;
+  text-transform: uppercase;
+  font-size: 8px;
+  color: #bdbdbd;
+}
+
+.location {
+  text-transform: uppercase;
+  transform: scaleY(1.15);
+  font-size: 12px;
+  letter-spacing: 1.7px;
+  position: absolute;
+  left: 22px;
+  bottom: 17px;
+}
+
+.weather-icon img {
+  position: absolute;
+  width: 80px;
+  bottom: 10px;
+  right: 20px;
+}
+
+/* Error message if no geolocation is avalible */
+.notification {
+  position: absolute;
+  top: 182px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #d42432;
+  width: 345px;
+  height: 30px;
+  text-align: center;
+  border-radius: 7px;
+  padding: 20px;
+  font-size: 1.2em;
+  z-index: 1;
+  display: none;
+}
+
+/* ----- Back of the card ----- */
+.cardBox .card .card-back {
+  background: rgba(30, 60, 114);
+  box-shadow: 0px 35px 150px 25px rgba(0, 0, 0, 0.2),
+    1px 1px 10px 5px rgba(0, 0, 0, 0.1);
+  color: rgba(189, 189, 189, 0.8);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.back-text {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#app-description {
+  margin-top: -15px;
+  text-align: center;
+  transform: scaleY(1.15);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.name-field {
+  height: 35px;
+  width: 95%;
+  margin: 7px auto;
+  background: #bdbdbd;
+  z-index: 1;
+}
+
+/* Hand written signature */
+.name-field p {
+  font-family: 'Reenie Beanie', cursive;
+  color: rgba(22, 22, 22, 0.9);
+  font-size: 44px;
+  margin-left: 15px;
+}
+
+.programming-tech {
+  text-align: center;
+}
+#tech {
+  text-transform: uppercase;
+  font-size: 8px;
+}
+
+#copyright {
+  margin-top: 2px;
+  font-size: 7px;
+  opacity: 0.8;
+}
+
+/* ----- Social media links ----- */
+.social-media {
+  position: absolute;
+  width: 100%;
+  bottom: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-media ul {
+  list-style: none;
+}
+
+.social-media li {
+  display: inline;
+  margin: 0 6px;
+}
+
+.social-media a {
+  color: rgba(189, 189, 189, 0.9);
+  font-size: 18px;
+  padding: 5px;
+}
+
+.social-media a i {
+  transform: scale(1.3);
+}
+.social-media a i:hover {
+  color: #e1e1e1;
+  transform: scale(1.7);
+  transition: all 0.4s ease;
+}
