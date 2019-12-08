@@ -8,8 +8,8 @@
 body {
   height: 100vh;
   background-color: #4481eb;
-  background: url('/img/landscape_image.jpg') no-repeat bottom center/cover;
-  font-family: 'Nunito', sans-serif;
+  background: url("/img/landscape_image.jpg") no-repeat bottom center/cover;
+  font-family: "Nunito", sans-serif;
   color: #dddcdc;
   overflow: hidden;
 }
@@ -238,7 +238,7 @@ body {
 
 /* Hand written signature */
 .name-field p {
-  font-family: 'Reenie Beanie', cursive;
+  font-family: "Reenie Beanie", cursive;
   color: rgba(22, 22, 22, 0.9);
   font-size: 44px;
   margin-left: 15px;
