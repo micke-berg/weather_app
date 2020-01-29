@@ -47,7 +47,7 @@ function setPosition(position) {
   setInterval(() => {
     console.log(latitude);
     getWeather(latitude, longitude);
-  }, 30000);
+  }, 30000);git 
 }
 
 // Show error if problem with getting geolocation
